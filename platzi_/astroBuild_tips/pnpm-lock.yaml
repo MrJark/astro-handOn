@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: 3.0.1
     version: 3.0.1(astro@3.0.10)(tailwindcss@3.2.4)
+  '@tailwindcss/line-clamp':
+    specifier: ^0.4.2
+    version: 0.4.2(tailwindcss@3.2.4)
   astro:
     specifier: ^3.0.10
     version: 3.0.10
@@ -774,6 +777,14 @@ packages:
     dependencies:
       deepmerge: 4.3.1
       escalade: 3.1.1
+    dev: false
+
+  /@tailwindcss/line-clamp@0.4.2(tailwindcss@3.2.4):
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.2.4(postcss@8.4.29)
     dev: false
 
   /@types/babel__core@7.20.1:

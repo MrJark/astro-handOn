@@ -18,7 +18,7 @@ Proyacto de astro para practicar. He inicializado el proyecto con **pnpm**
 
 - Voy a usar la página [HyperUi](https://www.hyperui.dev), una librería de componentes de tailwind que simplemente es copiar y pegar
 
--
+- Para que los archivos markdown se vean los estilos, necesito instalar **"@tailwindcss/line-clamp@0.4.2"** y habilitar el plugin en el tailwind.config
 
 ## Comentarios
 
