@@ -18,6 +18,8 @@ Proyacto de astro para practicar. He inicializado el proyecto con **pnpm**
 
 - Voy a usar la página [HyperUi](https://www.hyperui.dev), una librería de componentes de tailwind que simplemente es copiar y pegar
 
+-
+
 ## Comentarios
 
 -
