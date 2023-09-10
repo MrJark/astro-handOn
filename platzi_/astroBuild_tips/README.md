@@ -10,7 +10,7 @@ Proyacto de astro para practicar. He inicializado el proyecto con **pnpm**
 
   Además, necesitas crear la carpeta styles y dentro de esta un **bases.css** donde tengas la siguiente configuración:
 
-  ```
+  ```css
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
