@@ -3,20 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+
+const allPosts = await Astro.glob("../content/*.md") // el *.md significa que acceda a todos los archivos que tengan el .md
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<Header title='Asto' />
 		<Hero />
-			
-
+		
 		<ul role="list" class="link-card-grid">
-			<Card
-				title='Hello Word'
-				time='2024-06-09'
-				tags={['JavaScript']}
-			/>
+			<!-- es necesario el frontmatter en los componentes porque es lo que astro usa para buscar entre los elementos -->
+			{
+				allPosts.map( (item) => (
+					<Card
+						title={item.frontmatter.title} 
+						time={item.frontmatter.pubDate}
+						tags={item?.frontmatter?.tags}
+					/>
+				))
+			}
 
 		</ul>
 	</main>
