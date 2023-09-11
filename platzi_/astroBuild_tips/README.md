@@ -28,4 +28,4 @@ Proyacto de astro para practicar. He inicializado el proyecto con **pnpm**
 
 ## Comentarios
 
--
+- Las rutas **estáticas** son aquellas que se encuentran dentroi de la carpeta pages y pueden ser .js, .ts, .tsx ...

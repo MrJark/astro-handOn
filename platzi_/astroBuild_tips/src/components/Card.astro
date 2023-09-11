@@ -1,11 +1,13 @@
 ---
+import { slide } from 'astro:transitions';
 interface Props {
-  title: string;
-  time: string;
-  tags: string[]; // esto dice que recibo string pero que están dentro de un arreglo
+  title: string,
+  time: string,
+  tags: string[], // esto dice que recibo string pero que están dentro de un arreglo
+  slug: string,
 }
 
-const { tags, title, time } = Astro.props;
+const { tags, title, time, slug } = Astro.props;
 ---
 
 <article
@@ -19,7 +21,7 @@ const { tags, title, time } = Astro.props;
 			{time}
 		</time>
 
-		<a href="#">
+		<a href={`/posts/${slug}`}>
 			<h3 class="mt-0.5 text-lg font-medium text-gray-900 dark:text-white">
 				{title}
 			</h3>
