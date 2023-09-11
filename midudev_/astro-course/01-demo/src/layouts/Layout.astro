@@ -1,6 +1,9 @@
 ---
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import { ViewTransitions } from 'astro:transitions'; // <- GUAU
+
 interface Props {
 	title: string;
 }
@@ -17,10 +20,11 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body class=" bg-gray-950 min-h-screen pb-32 text-center">
 		<Header />
-		<main class="max-w-5x px-4 m-auto pb-8">
+		<main>
 			<slot />
 		</main>
 		<Footer>

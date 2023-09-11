@@ -25,3 +25,5 @@ En esta carpeta voy a tener todos los proyectos que [Midudev](https://midu.dev) 
         ];
     }
   ```
+
+- Astro, como componente, a veces vscode no lo pilla o te da errores que no son realies porque en el pnpm dev funciona, así que lo mejor es cerrar y abrir vsc y ya

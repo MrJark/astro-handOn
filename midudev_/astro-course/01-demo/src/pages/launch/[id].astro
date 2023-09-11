@@ -3,30 +3,40 @@
 import Layout from "../../layouts/Layout.astro"
 import { getLaunchesById, getLatestLaunches } from '../../services/spaceX'
 
+// export const prerender = false // esto hace que funcione en server y no haria el getStaticPaths
+
 const props = Astro.params;
 const { id } = props;
 
-console.log(props);
+// console.log(props);
 
 let launches
 if ( id ) {
     launches = await getLaunchesById({ id })
 }
-export async function getStaticPaths() {
-    // tienes que llamar una api para que te diga de forma AUTOMÁTICA todas las ids qeu hay de ahí que haga esta función async, sino sería normal
+// export async function getStaticPaths() { // lo comento porque lo voy a hacer estático
+//     /**
+//      * ! Hacer esto 👇🏼 es correcto cuando sabes antes de que el usuario entre a la pagina el objeto que tienes a iterar SABES COMO ES EL OBJETO POR COMPLETO Y ES LIMITADO ( EN DECENAS )
+//      *  ? Para solucionarlo, Astro tiene varios tipos de renders, este sería el estático, pero tiene un server y un hybrid el cual usa ambas, la estática para un pre-rendering y la server para cuando tenga que cargar más
+//      * * <https://docs.astro.build/en/reference/configuration-reference/#output>
+//      */
+//     // tienes que llamar una api para que te diga de forma AUTOMÁTICA todas las ids qeu hay de ahí que haga esta función async, sino sería normal
 
-    const launches = await getLatestLaunches
+//     const launches = await getLatestLaunches();
 
-    return [
-        {params: {id: '5eb87cd9ffd86e000604b32a'}},
-    ]
-}
+//     return launches.map( launch => ( // retorna un objeto, que es lo más lógico ya que tiene sus keys e ids y no es un objeto iterable
+//         { params: { id: launch.id } }
+//     ))
+// }
 
 ---
 
 
 <Layout title={`Launch id #${id}`}>
-    <article>
+    <article class=" flex gap-4 flex-col">
+        <img class=" self-center w-52 h-auto" src={launches?.links.patch.small} alt={launches?.name}>
+        <h2 class=" text-4xl text-white font-bold">Launch: {launches?.flight_number}</h2>
+        <p class=" text-lg">{launches?.details}</p>
         {launches?.id}
     </article>
 </Layout>
