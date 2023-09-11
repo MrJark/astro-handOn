@@ -1,4 +1,5 @@
 ---
+import { Counter } from "./Counter";
 import HeaderButton from "./HeaderButton.astro";
 // console.log('js');
 ---
@@ -11,6 +12,7 @@ import HeaderButton from "./HeaderButton.astro";
         <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
             All about SpaceX launches
         </p>
+        <Counter transition:persist client:visible/>
     </div>
 
     <nav class="flex flex-col items-center justify-between w-full text-center md:flex-row">

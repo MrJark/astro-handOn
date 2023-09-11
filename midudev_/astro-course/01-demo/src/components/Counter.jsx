@@ -4,19 +4,19 @@ export function Counter() {
     const [counter, setCounter] = useState(0)
 
     const addCounter = () => {
-        setCounter( counter + 1)
+        setCounter( counter => counter + 1)
     }
     const decCounter = () => {
-        setCounter( counter + 1)
+        setCounter( counter => counter - 1)
     }
 
     return (
         <>
-            <span>{counter}</span>
-            <button onClick={addCounter}>
+            <button class=" border rounded-md px-4 py-2 text-xl m-6" onClick={addCounter}>
                 +
             </button>
-            <button onClick={decCounter}>
+            <span>{counter}</span>
+            <button class=" border rounded-md px-4 py-2 text-xl m-6" onClick={decCounter}>
                 -
             </button>
         </>

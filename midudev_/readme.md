@@ -27,3 +27,7 @@ En esta carpeta voy a tener todos los proyectos que [Midudev](https://midu.dev) 
   ```
 
 - Astro, como componente, a veces vscode no lo pilla o te da errores que no son realies porque en el pnpm dev funciona, así que lo mejor es cerrar y abrir vsc y ya
+
+- POr defecto los componentes son ESTÁTICOS, hasta los useStates de react o preact. Para hacerlos dinámicos, hay que añadirles al componente donde esté renderizándose, el counter por ejemplo en el Header, **client:visible**. Esto quiere decir que va a ser interactivo cunado sea visible para el cliente ( es la opción por default )
+
+- Si queiro mantener un estado de algún componente cuando cambie de ruta añades al **componente** el **transition:persist**
