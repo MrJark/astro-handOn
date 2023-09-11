@@ -1,29 +1,10 @@
 ---
 // aquí puedes ejecutar el js que quieras, incluio el fetching
-// const res = await fetch('https://api.spacexdata.com/v5/launches') // sin query lo cual nos retorna 205 elementos
-import { type APISpaceXResponse } from '../types/api'
 import CardLaunch from './CardLaunch.astro';
-const res = await fetch('https://api.spacexdata.com/v5/launches/query', {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        query: {},
-        options: {
-            sort: {
-                date_unix: 'asc'
-            },
-            limit: 12,
-        },
-    })
-}) // este código es de javascript. Todo nativo, nada raro 😑
-// const data = JSON.stringify(await res.json()) // he tenido que hacerlo un string para poder copiarlo y mandarlo al quicktype
-const data = await res.json() as APISpaceXResponse
-const { docs: launches } = data; // cambio de nombre
+// He mandado el código a un archivo .ts por simplificar
+import {getLatestLaunches} from '../services/spaceX'
 
-// astro NO EJECUTA NADA EN LA PARTE DEL CLIENTE POR DEFECTO por tanto el log, estará en la terminal o si usas el consoleNInja aquí
-// console.log(data);
+const launches = await getLatestLaunches()
 ---
 
 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

@@ -13,3 +13,15 @@ En esta carpeta voy a tener todos los proyectos que [Midudev](https://midu.dev) 
 - Astro es compatible con **archivos Markdown** de forma nativa
 
 - Tmabién soporta archivos **.html**
+
+- Para las rutas dinámicas, _aquellas que están dentro de subcarpetas dentro de la carpeta pages_, se necesita un `getStaticPath`:
+
+  ```ts
+    export function getStaticPath() {
+        return [
+            {params: {dog: 'clifford'}},
+            {params: {dog: 'rover'}},
+            {params: {dog: 'spot'}},
+        ];
+    }
+  ```

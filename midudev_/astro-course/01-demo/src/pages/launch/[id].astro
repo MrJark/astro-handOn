@@ -1,0 +1,32 @@
+---
+
+import Layout from "../../layouts/Layout.astro"
+import { getLaunchesById, getLatestLaunches } from '../../services/spaceX'
+
+const props = Astro.params;
+const { id } = props;
+
+console.log(props);
+
+let launches
+if ( id ) {
+    launches = await getLaunchesById({ id })
+}
+export async function getStaticPaths() {
+    // tienes que llamar una api para que te diga de forma AUTOMÁTICA todas las ids qeu hay de ahí que haga esta función async, sino sería normal
+
+    const launches = await getLatestLaunches
+
+    return [
+        {params: {id: '5eb87cd9ffd86e000604b32a'}},
+    ]
+}
+
+---
+
+
+<Layout title={`Launch id #${id}`}>
+    <article>
+        {launches?.id}
+    </article>
+</Layout>
