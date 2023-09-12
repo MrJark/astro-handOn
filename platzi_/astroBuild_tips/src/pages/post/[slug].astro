@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+// para las rutas dinámicas ten en cuenta que te hará falta está función siempre ya que astro está por default para rutas estáticas
+
+export async function getStaticPaths() {
+    const posts = await getCollection('tips')
+
+    return posts.map( (post) => (
+            {
+                params: { slug: post.slug},
+                props: post,
+            }
+        ));
+        
+    }
+        
+const post = Astro.props;
+const { Content } = await post.render();
+
+---
+
+<Content />

@@ -8,7 +8,6 @@ import { getCollection } from 'astro:content'; // esta es la forma de traer el c
 const posts = (await getCollection('tips')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
-console.log(posts);
 
 ---
 
@@ -25,7 +24,7 @@ console.log(posts);
 						title={post.data.title} 
 						time={post.data.pubDate}
 						tags={post.data.tags}
-                        slot={post.slot}
+                        slug={post.slug}
 					/>
 				))
 			}

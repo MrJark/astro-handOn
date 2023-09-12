@@ -20,10 +20,12 @@ const allPosts = await Astro.glob("../content/tips/*.md") // el *.md significa q
 						title={item.frontmatter.title} 
 						time={item.frontmatter.pubDate}
 						tags={item?.frontmatter?.tags}
+						slug={item?.frontmatter?.slug}
 					/>
+					
 				))
 			}
-
+			
 		</ul>
 	</main>
 </Layout>
