@@ -2,9 +2,8 @@
 title: "Hello Astro"
 pubDate: 2024-05-07
 description: " Hello this is my first recomendation"
-image: 
+image: "https://api.lorem.space/image/book?w=150&h=150
 tags: [ "astro", "typescript" ]
-slug: hello-astro
 layout: "../../layouts/Post.astro"
 ---
 
