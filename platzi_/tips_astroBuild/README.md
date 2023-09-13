@@ -1,54 +1,33 @@
 # Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
-```
+Proyacto de astro para practicar. He inicializado el proyecto con **pnpm**
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Instalaciones
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Voy a tener como dependencia para los estilos Tailwind, la versión 3.2.4 -> **pnpm install @astrojs/tailwind@3.0.1 tailwindcss@3.2.4** o hacer un **pnpm astro add tailwind** y me olvido de todo. Hago la primera para hacer las configuraciones pertinentes.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+  En la primera config, necesita importar en el archivo astro.config.mjs el propio tailwind e integrarlo en defindConfig
 
-## 🚀 Project Structure
+  Además, necesitas crear la carpeta styles y dentro de esta un **bases.css** donde tengas la siguiente configuración:
 
-Inside of your Astro project, you'll see the following folders and files:
+  ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+  ```
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Voy a usar la página [HyperUi](https://www.hyperui.dev), una librería de componentes de tailwind que simplemente es copiar y pegar
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- Para que los archivos markdown se vean los estilos, necesito instalar **@tailwindcss/line-clamp@0.4.2** y habilitar el plugin en el tailwind.config
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Para poder tener elementos jsx en markdown voy a intalar la extensión **pnpm install @astrojs/mdx@0.16.0 -E** y en el archivo astro.config, tienes que importar el archivo mdx y añadirlo a las integraciones.
 
-Any static assets, like images, can be placed in the `public/` directory.
+  Para no tener que hacer las configuraciones, también se puede añadir con **pnpn astro add mdx** y astro haría las configuraciones por ti
 
-## 🧞 Commands
+  Si no se te ve el formato del archivo .mdx, instala la extensión [MDX](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx)
 
-All commands are run from the root of the project, from a terminal:
+- Como formateador voy a usar prettier y sus dependencias son **pnpm i -D prettier@2.8.4 prettier-plugin-astro@0.8.0** y crepo el archivo **en la raiz** con el nombre **.prettier.cjs**
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Comentarios
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Las rutas **estáticas** son aquellas que se encuentran dentroi de la carpeta pages y pueden ser .js, .ts, .tsx ...
