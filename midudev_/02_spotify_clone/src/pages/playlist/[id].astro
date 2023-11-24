@@ -1,11 +1,12 @@
 ---
+import Greeting from "@/components/Greeting.svelte";
 import Layout from "@/layouts/Layout.astro";
 
 import { allPlaylists, songs } from "@/lib/data";
 
 const { id } = Astro.params; // esta id sale del nombre del archivo. Si le pones idPatatas.astro será const { idPatatas } = Astro.params
 const playlist = allPlaylists.find((playlist) => playlist.id === id)
-const playtListSongs = songs.filter((songs) => songs.albumId === playlist?.albumId)
+const playListSongs = songs.filter((songs) => songs.albumId === playlist?.albumId)
 
 ---
 
@@ -17,23 +18,43 @@ const playtListSongs = songs.filter((songs) => songs.albumId === playlist?.album
   >
     <!-- La transition name debe de estar también en la parte de a de las carátulas para que identifique la transición y hacia donde tiene que ir y tienes el nexo entre dos pag distintas-->
     <!-- <PageHeader /> -->
-    <header class="flex flex-col gap-8 px-6 py-6">
+    <header class="flex flex-row gap-8 px-6 py-6 mt-14">
       <picture class="aspect-square w-52 h-52 flex-none">
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
-          class="object-cover w-full h-full rounded-md"
+          class="object-cover w-full h-full shadow-lg"
           transition:name=`playlist ${playlist?.id} image`
         />
       </picture>
+
+      <div class="flex flex-col justify-between">
+        <h2 class="flex flex-1 items-end">Playlist</h2>
+        <div>
+          <h1 class="text-5xl font-bold block text-white">
+            {playlist?.title}
+            <span transition:name=`playlist ${playlist?.id} title`></span>
+          </h1>
+        </div>
+
+        <div class="flex-1 flex items-end">
+          <div class="text-sm text-gray-300 font-normal">
+            <div transition:name=`playlist ${playlist?.id} artists`>
+              <span>{playlist?.artists.join(", ")}</span>
+            </div>
+            <p class="mt-1">
+              <span class="text-white">{playListSongs.length} canciones</span>,
+              3 h aproximadamente
+            </p>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <div class="relative z-10 px-6 pt-12">
-      <!-- <Greeting /> -->
-      <div class="flex flex-wrap mt-6 gap-4 pb-2"></div>
-    </div>
+    <div class="relative z-10 px-6 pt-12"></div>
+    
     <div
-      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+      class=" inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 "
     >
       <!-- {Este div es para que se forme el gradiente debajo del main pero por encima del fondo pero como su opacidad es de 80 al final, arriba, se ve el fondo verde} -->
     </div>
