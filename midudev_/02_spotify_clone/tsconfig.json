@@ -14,6 +14,9 @@
       ],
       "@/lib": [
         "src/lib/*"
+      ],
+      "@/layout": [
+        "src/layouts/*"
       ]
     }
   }

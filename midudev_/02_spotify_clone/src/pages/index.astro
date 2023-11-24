@@ -1,7 +1,25 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+import PlaylistItemCard from "@/components/PlaylistItemCard.astro";
+
+import { playlists } from "@/lib/data";
 ---
 
-<Layout title="Sportify Clone" > 
-
+<Layout title="Sportify Clone">
+  <div
+    id="playlist-container"
+    class="relative transition-all duration-1000 bg-green-600"
+  >
+    <!-- <PageHeader /> -->
+    <div class="relative z-10 px-6">
+      <!-- <Greeting /> -->
+      <span class="text-white text-4xl">Good morning</span>
+      {playlists.map((playlist) => <PlaylistItemCard playlist={playlist} />)}
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+    >
+      <!-- {Este div es para que se forme el gradiente debajo del main pero por encima del fondo pero como su opacidad es de 80 al final, arriba, se ve el fondo verde} -->
+    </div>
+  </div>
 </Layout>
