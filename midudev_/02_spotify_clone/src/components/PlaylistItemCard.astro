@@ -13,13 +13,15 @@ const artistsString = artists.join(", "); // esta no es la froma mas correcta po
 
 <a
   href={`/playlist/${id}`}
-  class="playlist-item transition-all duration-300 flex relative p-2 overflow-hidden items-center gap-5 rounded-md hover:bg-zinc-700 shadow-lg hover:shadow-xl bg-zinc-500/30"
+  class="playlist-item transition-all duration-300 flex relative p-2 overflow-hidden items-center gap-2 pb-7 rounded-md hover:bg-zinc-700 shadow-lg hover:shadow-xl bg-zinc-500/30 w-44 flex-col"
+  transition:name=`playlist ${id} box`
 >
-  <picture class="h-12 w-12 flex-none">
+  <picture class="aspect-square w-full h-auto flex-none">
     <img
       src={cover}
       alt={`Cover of ${title} by ${artists}`}
       class="object-cover w-full h-full rounded-md"
+      transition:name=`playlist ${id} image`
     />
   </picture>
   <div class="flex flex-auto flex-col truncate">
