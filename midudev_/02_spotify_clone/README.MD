@@ -10,4 +10,4 @@ El poryecto es un clon de Spotify en el cual se va a usar el Framework de Astro 
 
 ## Comentarios útiles
 
-* 
+* Los componentes en astro son estáticos pero si quieres que sean dinámicos, tienes que ponerle client:load/visible

@@ -2,6 +2,7 @@
 // import Play from "@/icons/Play.astro"
 // no puedo poner los siguientes componentes en jsx porque estoy añadiendo astro a jsx y no jsx a astro
 
+import { usePlayerStore } from "@/store/playerStore"
 import { useEffect, useRef, useState } from "react"
 
 export const Pause = ( { className } ) => (
@@ -13,39 +14,42 @@ export const Play = ( { className } ) => (
 
 
 export function Player () {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [currentSong, setcurrentSong] = useState(null)
+  // const [isPlaying, setIsPlaying] = useState(false) // ya no hace falta esto gracias a zustand y al estado global que me crea y lo sustituyo por el usePlayerStore
+  const { isPlaying, setIsPlaying } = usePlayerStore( state => state )
+  const [ currentSong, setcurrentSong ] = useState( null )
   const audioRef = useRef()
 
-  useEffect(() => { // para que continue por donde se qeudó
+  useEffect( () => { // para que continue por donde se qeudó
     audioRef.current.src = `/music/1/02.mp3`
-  }, [])
-  
+  }, [] )
+
 
   const handleClick = () => {
-    if (isPlaying) {
+    if ( isPlaying )
+    {
       audioRef.current.pause()
-    } else {
+    } else
+    {
       audioRef.current.play()
       audioRef.current.volume = 0.2
     }
 
-    setIsPlaying(!isPlaying)
+    setIsPlaying( !isPlaying )
   }
-  return(
+  return (
     <>
       <div className="flex flex-row justify-between w-full px-4 z-50">
         <div>
           Current Soon...
         </div>
-        
+
         <div className="grid place-content-center gap-4 flex-1">
           <div className="flex justify-center">
             <button
-              onClick={handleClick} 
+              onClick={ handleClick }
               className="bg-white rounded-full p-2">
-                {isPlaying ? <Pause/> : <Play />}
-              </button>
+              { isPlaying ? <Pause /> : <Play /> }
+            </button>
           </div>
         </div>
 
@@ -53,7 +57,7 @@ export function Player () {
           Volumen...
         </div>
 
-        <audio ref={audioRef} />
+        <audio ref={ audioRef } />
       </div>
     </>
   )
