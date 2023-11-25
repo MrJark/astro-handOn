@@ -1,6 +1,6 @@
 ---
 import type { Playlist } from "@/lib/data";
-import { CardPlayBotton } from "@/components/CardPlayBotton"
+import { CardPlayBotton } from "@/components/CardPlayBotton";
 
 interface Props {
   playlist: Playlist;
@@ -11,6 +11,7 @@ const { id, albumId, artists, color, cover, title } = playlist;
 
 const artistsString = artists.join(", "); // esta no es la froma mas correcta por los idiomas
 ---
+
 <article class="group relative">
   <div
     class=`absolute right-4 bottom-10 translate-y-4
@@ -18,12 +19,12 @@ const artistsString = artists.join(", "); // esta no es la froma mas correcta po
     group-hover:translate-y-0 group-hover:opacity-100
     z-10`
   >
-    <CardPlayBotton id={id} />
-
+    <CardPlayBotton id={id} client:load />
+    <!-- los conmponentes en astro son estáticos por defecto por tanto el cardPlayBotton necesita está en el client sidey que sea interactivo y para eso es el client:load ( queire decir que en cuanto se carge que sea interactivo) -->
   </div>
   <a
     href={`/playlist/${id}`}
-    class="playlist-item transition-all duration-300 flex relative p-2 overflow-hidden  gap-2 pb-7 rounded-md hover:bg-zinc-700 shadow-lg hover:shadow-xl bg-zinc-500/30 w-44 flex-col"
+    class="playlist-item transition-all duration-300 flex relative p-2 overflow-hidden gap-2 pb-7 rounded-md hover:bg-zinc-700 shadow-lg hover:shadow-xl bg-zinc-500/30 w-44 flex-col"
     transition:name=`playlist ${id} box`
   >
     <picture class="aspect-square w-full h-auto flex-none">
@@ -35,14 +36,17 @@ const artistsString = artists.join(", "); // esta no es la froma mas correcta po
       />
     </picture>
     <div class="flex flex-auto flex-col truncate text-left">
-      <h4 
+      <h4
         class="text-white text-sm tracking-wider"
         transition:name=`playlist ${playlist?.id} title`
-      >{title}</h4>
-      <span 
+      >
+        {title}
+      </h4>
+      <span
         class="text-xs text-gray-400 tracking-wide"
-        transition:name=`playlist ${playlist?.id} artists`  
-      >{artists.join(", ")}</span>
+        transition:name=`playlist ${playlist?.id} artists`
+        >{artists.join(", ")}</span
+      >
     </div>
   </a>
 </article>
