@@ -15,9 +15,16 @@ export const Play = ( { className } ) => (
 
 export function Player () {
   // const [isPlaying, setIsPlaying] = useState(false) // ya no hace falta esto gracias a zustand y al estado global que me crea y lo sustituyo por el usePlayerStore
-  const { isPlaying, setIsPlaying } = usePlayerStore( state => state )
-  const [ currentSong, setcurrentSong ] = useState( null )
+  const { isPlaying, setIsPlaying, currentMusic } = usePlayerStore( state => state )
+  // const [ currentSong, setcurrentSong ] = useState( null ) // lo elimino porque ya saco de usePlayerStore el currentMusic
   const audioRef = useRef()
+
+  useEffect( () => {
+    isPlaying
+      ? audioRef.current.play()
+      : audioRef.current.pause()
+  }, [ isPlaying ] )
+
 
   useEffect( () => { // para que continue por donde se qeudó
     audioRef.current.src = `/music/1/02.mp3`
@@ -25,14 +32,15 @@ export function Player () {
 
 
   const handleClick = () => {
-    if ( isPlaying )
-    {
-      audioRef.current.pause()
-    } else
-    {
-      audioRef.current.play()
-      audioRef.current.volume = 0.2
-    }
+    // comento esto porque ya no es a nivel componente, sino en global y de ahí el useEffect
+    // if ( isPlaying )
+    // {
+    //   audioRef.current.pause()
+    // } else
+    // {
+    //   audioRef.current.play()
+    //   audioRef.current.volume = 0.2
+    // }
 
     setIsPlaying( !isPlaying )
   }
