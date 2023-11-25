@@ -1,7 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/Users/mrjark/Desktop/a/astro-handOn/midudev_/02_spotify_clone",
+    "baseUrl": "/Users/mrjark/Desktop/astro/astro-handOn/midudev_/02_spotify_clone", // MacBook Air
+    // "baseUrl": "/Users/mrjark/Desktop/a/astro-handOn/midudev_/02_spotify_clone", // Mac Mini
     "paths": {
       "@/*": [
         "src/*"
