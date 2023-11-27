@@ -1,13 +1,13 @@
 ---
-import Greeting from "@/components/Greeting.svelte";
-import Layout from "@/layouts/Layout.astro";
-
-import { allPlaylists, songs } from "@/lib/data";
+import Layout from "../../layouts/Layout.astro";
+import { allPlaylists, songs } from "../../lib/data";
+import Greeting from "../components/Greeting.svelte";
 
 const { id } = Astro.params; // esta id sale del nombre del archivo. Si le pones idPatatas.astro será const { idPatatas } = Astro.params
-const playlist = allPlaylists.find((playlist) => playlist.id === id)
-const playListSongs = songs.filter((songs) => songs.albumId === playlist?.albumId)
-
+const playlist = allPlaylists.find((playlist) => playlist.id === id);
+const playListSongs = songs.filter(
+  (songs) => songs.albumId === playlist?.albumId,
+);
 ---
 
 <Layout title="Sportify Clone">
@@ -52,10 +52,8 @@ const playListSongs = songs.filter((songs) => songs.albumId === playlist?.albumI
     </header>
 
     <div class="relative z-10 px-6 pt-12"></div>
-    
-    <div
-      class=" inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 "
-    >
+
+    <div class="inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80">
       <!-- {Este div es para que se forme el gradiente debajo del main pero por encima del fondo pero como su opacidad es de 80 al final, arriba, se ve el fondo verde} -->
     </div>
   </div>

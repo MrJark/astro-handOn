@@ -1,6 +1,6 @@
-import { usePlayerStore } from "@/store/playerStore" // estado global
+import { usePlayerStore } from "../store/playerStore" // estado global
 import { Pause, Play } from "./Player"
-import { songs } from "@/lib/data"
+import { songs } from "../lib/data"
 
 export function CardPlayBotton ( { id } ) {
   const {
